@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://p407m5jp6l40"]
+
+[ext_resource type="Script" uid="uid://yhcaulwegfu5" path="res://player.gd" id="1_glv2v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pgxrn"]
+size = Vector3(30, 0.2, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pgxrn"]
+size = Vector3(30, 0.2, 30)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pgxrn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pgxrn"]
+
+[node name="Main" type="Node3D" unique_id=198146781]
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1769715446]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=353829691]
+shape = SubResource("BoxShape3D_pgxrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=183799241]
+mesh = SubResource("BoxMesh_pgxrn")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1806092230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_glv2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1188890311]
+mesh = SubResource("CapsuleMesh_pgxrn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1316188863]
+shape = SubResource("CapsuleShape3D_pgxrn")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=256152129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 10, 8)
+current = true
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1509262308]
+transform = Transform3D(0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
